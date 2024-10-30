@@ -22,8 +22,20 @@ public class ApiController {
         return  ResponseEntity.ok(productDtos);
     }
 
+    @GetMapping("/api/products")
+    public ResponseEntity<List<ProductDto>> findAll(){
+        List<ProductDto> productDtos = productService.findAll();
+        return  ResponseEntity.ok(productDtos);
+    }
+
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductDto> findById(@PathVariable int id){
+        ProductDto productDto = productService.findById(id);
+        return  ResponseEntity.ok(productDto);
+    }
+
+    @GetMapping("/api/product/{id}")
+    public ResponseEntity<ProductDto> findByIdFeign(@PathVariable int id){
         ProductDto productDto = productService.findById(id);
         return  ResponseEntity.ok(productDto);
     }
